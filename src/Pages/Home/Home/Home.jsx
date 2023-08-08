@@ -1,7 +1,9 @@
 import Banner from "../Banner/Banner";
+import CallUs from "../CallUs/CallUs";
 import OrderOnline from "../OrderOnline/OrderOnline";
 import PopulerMenu from "../PopulerMenu/PopulerMenu";
 import Poster from "../Poster/Poster";
+import Recommanded from "../Recommanded/Recommanded";
 
 
 const Home = () => {
@@ -12,6 +14,8 @@ const Home = () => {
            <OrderOnline></OrderOnline>
            <Poster></Poster>
            <PopulerMenu></PopulerMenu>
+           <CallUs></CallUs>
+           <Recommanded></Recommanded>
         </div>
     );
 };
