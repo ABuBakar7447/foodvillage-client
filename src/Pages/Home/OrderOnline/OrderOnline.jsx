@@ -34,23 +34,23 @@ const OrderOnline = () => {
                 modules={[FreeMode, Pagination, Autoplay]}
                 className="mySwiper w-3/4 mx-auto"
             >
-                <SwiperSlide className='mb-8'>
+                <SwiperSlide className='mb-12'>
                     <img src={img1} alt="" />
                     <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>salad</p>
                 </SwiperSlide>
-                <SwiperSlide className='mb-8'>
+                <SwiperSlide className='mb-12'>
                     <img src={img2} alt="" />
                     <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>soup</p>
                 </SwiperSlide>
-                <SwiperSlide className='mb-8'>
+                <SwiperSlide className='mb-12'>
                     <img src={img3} alt="" />
                     <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>pizza</p>
                 </SwiperSlide>
-                <SwiperSlide className='mb-8'>
+                <SwiperSlide className='mb-12'>
                     <img src={img4} alt="" />
                     <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>dessert</p>
                 </SwiperSlide>
-                <SwiperSlide className='mb-8'>
+                <SwiperSlide className='mb-12'>
                     <img src={img5} alt="" />
                     <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>salad</p>
                 </SwiperSlide>

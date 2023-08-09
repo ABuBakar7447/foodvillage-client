@@ -5,6 +5,7 @@ import OrderOnline from "../OrderOnline/OrderOnline";
 import PopulerMenu from "../PopulerMenu/PopulerMenu";
 import Poster from "../Poster/Poster";
 import Recommanded from "../Recommanded/Recommanded";
+import Reviews from "../Reviews/Reviews";
 
 
 const Home = () => {
@@ -18,6 +19,7 @@ const Home = () => {
            <CallUs></CallUs>
            <Recommanded></Recommanded>
            <Featured></Featured>
+           <Reviews></Reviews>
         </div>
     );
 };
