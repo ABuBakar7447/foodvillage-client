@@ -21,7 +21,7 @@ const Recommanded = () => {
                     menu.slice(1, 4).map(item =>
                         <div key={item._id}>
 
-                            <div className="card w-96 bg-base-100 shadow-xl">
+                            <div className="card w-96 shadow-xl bg-[#20242c]">
                                 <figure><img src={item.image} alt="Shoes" /></figure>
                                 <div className="card-body h-[228px] flex items-center text-center flex-col">
                                     <h2 className="card-title">{item.name}</h2>

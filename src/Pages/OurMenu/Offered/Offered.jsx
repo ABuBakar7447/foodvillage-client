@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
-import MenuItem from "../../../Component/MenuItem/MenuItem";
 import Title from "../../../Component/Title/Title";
+import MenuItem from "../../../Component/MenuItem/MenuItem";
 
 
-const PopulerMenu = () => {
+const Offered = () => {
     const [menu, setmenu] = useState([])
 
     useEffect(()=>{
         fetch('menu.json')
         .then(res => res.json())
         .then(data => {
-            const popuarItems = data.filter(items=> items.category==='popular');
+            const popuarItems = data.filter(items=> items.category==='offered');
            setmenu(popuarItems) 
         })
     },[])
@@ -28,4 +28,4 @@ const PopulerMenu = () => {
     );
 };
 
-export default PopulerMenu;
+export default Offered;

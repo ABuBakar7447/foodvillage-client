@@ -21,7 +21,7 @@ const OrderOnline = () => {
         <div className='mb-12'>
             <Title heading={"From 11.00am to 8.00pm"} subheading={"Order Online"}></Title>
             <Swiper
-                slidesPerView={4}
+                slidesPerView={3}
                 spaceBetween={30}
                 freeMode={true}
                 autoplay={{
@@ -36,23 +36,23 @@ const OrderOnline = () => {
             >
                 <SwiperSlide className='mb-12'>
                     <img src={img1} alt="" />
-                    <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>salad</p>
+                    <p className='-mt-12 text-center md:text-2xl font-semibold uppercase text-slate-600'>salad</p>
                 </SwiperSlide>
                 <SwiperSlide className='mb-12'>
                     <img src={img2} alt="" />
-                    <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>soup</p>
+                    <p className='-mt-12 text-center md:text-2xl font-semibold uppercase text-slate-600'>soup</p>
                 </SwiperSlide>
                 <SwiperSlide className='mb-12'>
                     <img src={img3} alt="" />
-                    <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>pizza</p>
+                    <p className='-mt-12 text-center md:text-2xl font-semibold uppercase text-slate-600'>pizza</p>
                 </SwiperSlide>
                 <SwiperSlide className='mb-12'>
                     <img src={img4} alt="" />
-                    <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>dessert</p>
+                    <p className='-mt-12 text-center md:text-2xl font-semibold uppercase text-slate-600'>dessert</p>
                 </SwiperSlide>
                 <SwiperSlide className='mb-12'>
                     <img src={img5} alt="" />
-                    <p className='-mt-12 text-center text-2xl font-semibold uppercase text-slate-600'>salad</p>
+                    <p className='-mt-12 text-center md:text-2xl font-semibold uppercase text-slate-600'>salad</p>
                 </SwiperSlide>
 
                 
