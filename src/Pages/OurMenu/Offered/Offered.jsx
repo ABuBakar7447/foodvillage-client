@@ -16,7 +16,7 @@ const Offered = () => {
     },[])
     return (
         <div className="my-12 p-5">
-            <Title heading={"Check It Out"} subheading={"From Our Menu"}></Title>
+            <Title heading={"Check It Out"} subheading={"TODAY'S OFFER"}></Title>
             <div className="grid grid-col-1 md:grid-cols-2 gap-5">
                 
                     {
