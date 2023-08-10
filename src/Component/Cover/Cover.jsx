@@ -7,7 +7,7 @@ const Cover = ({img, heading, subheading}) => {
                 <div className=""></div>
                 <div className="hero-content text-center text-neutral-content">
                     <div className="w-11/12 p-12 mx-auto hero-overlay text-white opacity-90">
-                        <h1 className="mb-5 text-5xl font-bold">{heading}</h1>
+                        <h1 className="mb-5 text-5xl font-bold uppercase">{heading}</h1>
                         <p className="mb-5">{subheading}</p>
                         
                     </div>

@@ -1,24 +1,18 @@
-import { useEffect, useState } from "react";
 import Title from "../../../Component/Title/Title";
+import useMenu from "../../../hooks/useMenu";
 
 
 const Recommanded = () => {
-    const [menu, setmenu] = useState([])
-    useEffect(() => {
-        fetch('menu.json')
-            .then(res => res.json())
-            .then(data => {
-                const popularMenu = data.filter(items => items.category === 'offered');
-                setmenu(popularMenu)
-            })
-    }, [])
+    const [menu] = useMenu();
+    const recommands = menu.filter(items => items.category === 'offered');
+    
     return (
         <div className="my-12">
             <Title heading={"Should Try"} subheading={"Our Recommends"}></Title>
 
             <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3">
                 {
-                    menu.slice(1, 4).map(item =>
+                    recommands.slice(1, 4).map(item =>
                         <div key={item._id}>
 
                             <div className="card w-96 shadow-xl bg-[#20242c]">
