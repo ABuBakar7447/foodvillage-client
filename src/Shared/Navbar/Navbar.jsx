@@ -1,24 +1,47 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 
 const Navbar = () => {
+
+    const { user, logout } = useContext(AuthContext)
+    const handleLogout = () => {
+        logout()
+            .then = (() => { })
+                .catch(error => console.log(error))
+    }
+
     const naboptions =
         <>
-            <li><Link to='/' className="">Home</Link></li>
-            <li><Link to='/menu' className="">Our Menu</Link></li>
-            <li><Link to='/shop/salad' className="">Our Shop</Link></li>
-            <li><Link to='/login' className="">SignIN</Link></li>
-            <li><Link to='/signup' className="">SignUP</Link></li>
-            <li tabIndex={0}>
-                <details>
-                    <summary>Parent</summary>
-                    <ul className="p-2">
-                        <li><a>Submenu 1</a></li>
-                        <li><a>Submenu 2</a></li>
-                    </ul>
-                </details>
+            <li><Link to='/' className="mt-2">Home</Link></li>
+            <li><Link to='/menu' className="mt-2">Our Menu</Link></li>
+            <li><Link to='/secret' className="mt-2">Secret</Link></li>
+            <li><Link to='/shop/salad' className="mt-2">Our Shop</Link></li>
+
+
+            {
+                user?.email ?
+                    <>
+
+                        <li><Link to='' className="mt-2" onClick={handleLogout}>LogOut</Link></li>
+
+                    </>
+                    :
+                    <>
+                        <li><Link to='/login' className="mt-2">Sign IN</Link></li>
+                    </>
+            }
+            <li>
+                <Link to='/' className="">
+                    <div className="avatar">
+                        <div className="w-9 h-9 rounded-full">
+                            <img src={user?.photoURL} />
+                        </div>
+                    </div>
+                </Link>
             </li>
-            <li><a>Item 3</a></li>
+
         </>
     return (
         <div>
