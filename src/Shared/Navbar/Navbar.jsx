@@ -1,11 +1,14 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
+import { Icon } from '@iconify/react';
+import useCart from "../../hooks/useCart";
 
 
 const Navbar = () => {
 
-    const { user, logout } = useContext(AuthContext)
+    const { user, logout } = useContext(AuthContext);
+    const [cart] = useCart();
     const handleLogout = () => {
         logout()
             .then = (() => { })
@@ -16,8 +19,8 @@ const Navbar = () => {
         <>
             <li><Link to='/' className="mt-2">Home</Link></li>
             <li><Link to='/menu' className="mt-2">Our Menu</Link></li>
-            <li><Link to='/secret' className="mt-2">Secret</Link></li>
             <li><Link to='/shop/salad' className="mt-2">Our Shop</Link></li>
+            <li><Link to='/secret' className="mt-2">Secret</Link></li>
 
 
             {
@@ -34,13 +37,32 @@ const Navbar = () => {
             }
             <li>
                 <Link to='/' className="">
-                    <div className="avatar">
-                        <div className="w-9 h-9 rounded-full">
-                            <img src={user?.photoURL} />
-                        </div>
-                    </div>
+
+                    {user?.photoURL ?
+                        <>
+                            <div className="avatar">
+                                <div className="w-9 h-9 rounded-full">
+                                    <img src={user?.photoURL} />
+                                </div>
+                            </div>
+                        </>
+                        :
+                        <>
+                            <Icon className="w-7 h-7 mt-1" icon="iconamoon:profile-fill" />
+                        </>}
+
                 </Link>
             </li>
+
+            <li>
+                <Link to='/' className="flex mt-2">
+                    
+                        <Icon className="w-5 h-5" icon="mdi:cart" />
+                        <div className=" badge badge-secondary">+{cart.length || 0}</div>
+                    
+                </Link>
+            </li>
+
 
         </>
     return (

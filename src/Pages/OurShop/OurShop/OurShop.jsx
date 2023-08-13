@@ -12,10 +12,9 @@ const OurShop = () => {
 
     const fooditem = ['salad','pizza','soup','dessert','drinks'];
     const {category} = useParams();
-    console.log(category)
     
     const initialIndex = fooditem.indexOf(category);
-    console.log(initialIndex)
+    
     const [tabIndex, setTabIndex] = useState(initialIndex);
 
 
