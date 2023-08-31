@@ -10,12 +10,12 @@ const Recommanded = () => {
         <div className="my-12">
             <Title heading={"Should Try"} subheading={"Our Recommends"}></Title>
 
-            <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-3">
+            <div className="w-11/12 mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     recommands.slice(1, 4).map(item =>
                         <div key={item._id}>
 
-                            <div className="card w-96 shadow-xl bg-[#20242c]">
+                            <div className="card lg:w-96 shadow-xl bg-[#20242c]">
                                 <figure><img src={item.image} alt="Shoes" /></figure>
                                 <div className="card-body h-[228px] flex items-center text-center flex-col">
                                     <h2 className="card-title">{item.name}</h2>

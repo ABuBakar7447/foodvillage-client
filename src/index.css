@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.content {
+
+    background-color: aqua;
+}
+
+.drawer-side a.active {
+    color: white;
+    
+}
+.drawer-side a:hover {
+    color: white;
+    
+}
+
+.drawer-side a {
+    background-color: transparent;
+    color: black;
+}

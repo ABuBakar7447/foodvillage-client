@@ -18,7 +18,7 @@ const Navbar = () => {
     const naboptions =
         <>
             <li><Link to='/' className="mt-2">Home</Link></li>
-            <li><Link to='/menu' className="mt-2">Our Menu</Link></li>
+            <li><Link to='/menu' className="mt-2"> Menu</Link></li>
             <li><Link to='/shop/salad' className="mt-2">Our Shop</Link></li>
             <li><Link to='/secret' className="mt-2">Secret</Link></li>
 
@@ -55,10 +55,10 @@ const Navbar = () => {
             </li>
 
             <li>
-                <Link to='/' className="flex mt-2">
+                <Link to='/dashboard/mycart' className="flex mt-2">
                     
                         <Icon className="w-5 h-5" icon="mdi:cart" />
-                        <div className=" badge badge-secondary">+{cart.length || 0}</div>
+                        <div className=" badge badge-secondary">+{cart?.length || 0}</div>
                     
                 </Link>
             </li>
