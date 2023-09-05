@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Provider/AuthProvider';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import SocialSignup from '../SocialSignup/SocialSignup';
 
 
 
@@ -28,7 +29,7 @@ const LogIn = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password)
+        
         signIn(email, password)
             .then(result => {
                 const user = result.user;
@@ -101,6 +102,8 @@ const LogIn = () => {
                         </form>
 
                         <p className='text-[#D1A054] text-center'>New Here? Create a new account, <Link to='/signup' className='underline font-bold'>Sign UP</Link></p>
+
+                        <SocialSignup></SocialSignup>
                     </div>
                 </div>
             </div>

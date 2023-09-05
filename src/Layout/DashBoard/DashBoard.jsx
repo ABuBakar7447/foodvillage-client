@@ -1,10 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import useCart from "../../hooks/useCart";
+import { useState } from "react";
 
 
 const DashBoard = () => {
     const [cart] = useCart();
+    const [isAdmin] = useState(true);
     return (
         <div>
             <div className="drawer lg:drawer-open uppercase font-semibold">
@@ -18,20 +20,57 @@ const DashBoard = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 min-h-full">
                         {/* Sidebar content here */}
-                        <li><NavLink to='/dashboard/userhome'><Icon icon="ion:home" /> User Home</NavLink></li>
-                        <li><NavLink to='/dashboard/reservation'><Icon icon="simple-line-icons:calender" /> Reservation</NavLink></li>
-                        <li><NavLink to='/dashboard/payment'><Icon icon="zondicons:wallet" /> Payment History</NavLink></li>
+                        {
+                            isAdmin ?
+                                <>
+                                    <li><NavLink to='/dashboard/adminhome'><Icon icon="ion:home" />Admin Home</NavLink></li>
+                                    <li>
+                                        <NavLink to='/dashboard/additems'><Icon icon="fa6-solid:utensils" />
+                                            Add Items
+                                        </NavLink>
+                                    </li>
+                                    <li>
+                                        <NavLink to='/dashboard/manageitems'><Icon icon="uiw:menu" />
+                                            Manage Items
+                                        </NavLink>
+                                    </li>
 
 
-                        <li><NavLink to='/dashboard/mycart' className="content">
-                            <Icon icon="mdi:cart" />
-                            My Cart <span className=" badge badge-secondary">+{cart?.length || 0}</span>
-                            
-                        </NavLink></li>
+                                    <li>
+                                        <NavLink to='/dashboard/managebookings' className="content">
+                                            <Icon icon="gg:notes" />
+                                            Manage Bookings
+                                            {/* <span className=" badge badge-secondary">+{cart?.length || 0}</span> */}
+
+                                        </NavLink>
+                                    </li>
 
 
-                        <li><NavLink to='/dashboard/review'><Icon icon="material-symbols:rate-review-rounded" /> Add Review</NavLink></li>
-                        <li><NavLink to='/dashboard/booking'><Icon icon="uim:calender" /> My Booking</NavLink></li>
+                                    <li>
+                                        <NavLink to='/dashboard/allusers'><Icon icon="fa-solid:users" />
+                                            All Users
+                                        </NavLink>
+                                    </li>
+
+                                </>
+                                :
+                                <>
+                                    <li><NavLink to='/dashboard/userhome'><Icon icon="ion:home" /> User Home</NavLink></li>
+                                    <li><NavLink to='/dashboard/reservation'><Icon icon="simple-line-icons:calender" /> Reservation</NavLink></li>
+                                    <li><NavLink to='/dashboard/payment'><Icon icon="zondicons:wallet" /> Payment History</NavLink></li>
+
+
+                                    <li><NavLink to='/dashboard/mycart' className="content">
+                                        <Icon icon="mdi:cart" />
+                                        My Cart <span className=" badge badge-secondary">+{cart?.length || 0}</span>
+
+                                    </NavLink></li>
+
+
+                                    <li><NavLink to='/dashboard/review'><Icon icon="material-symbols:rate-review-rounded" /> Add Review</NavLink></li>
+                                    <li><NavLink to='/dashboard/booking'><Icon icon="uim:calender" /> My Booking</NavLink></li>
+                                </>
+                        }
 
                         <div className="divider h-[2px] bg-black"></div>
 

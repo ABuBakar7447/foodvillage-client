@@ -68,6 +68,8 @@ const MyCart = () => {
                                     <th>Action</th>
                                 </tr>
                             </thead>
+
+                            
                             <tbody className="text-center">
                                 {
                                     cart.map((product, index) => <tr key={product._id}>
