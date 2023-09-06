@@ -1,27 +1,16 @@
 import { Icon } from "@iconify/react";
-import { useEffect, useState } from "react";
+
 import { Helmet } from "react-helmet-async";
 import Title from "../../../Component/Title/Title";
-import { isError, useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 
 const Allusers = () => {
-    // const [users, setUser] = useState([]);
-    // const [loading, setLoading] = useState(true);
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/user')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setUser(data);
-    //             setLoading(false)
-    //         })
-    // }, [])
 
-    
-
-    const {refetch, data: users = []} = useQuery({
-        queryKey:['user'],
-        queryFn: async()=>{
+    const { refetch, data: users = [] } = useQuery({
+        queryKey: ['user'],
+        queryFn: async () => {
             const res = await fetch('http://localhost:5000/user');
             return res.json();
         }
@@ -29,7 +18,24 @@ const Allusers = () => {
     })
 
     const handleAdmin = user => {
-        console.log(user)
+
+        fetch(`http://localhost:5000/user/admin/${user._id}`, {
+            method: 'PATCH'
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                if (data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} has become an admin.`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+                }
+            })
     }
 
 
@@ -49,7 +55,7 @@ const Allusers = () => {
                 <div className="flex justify-center my-5 lg:text-[22px]">
 
                     <p>Total User: {users.length}</p>
-                    
+
                 </div>
                 <table className="table">
                     {/* head */}
@@ -68,10 +74,10 @@ const Allusers = () => {
                             <tr key={user._id}>
                                 <th>{index + 1}</th>
                                 <td>{user.name}</td>
-                                <td>{user.email}</td>
+                                <td className="lowercase">{user.email}</td>
                                 <td>
                                     {user.role === 'admin' ?
-                                        'Admin'
+                                        <p className="text-blue-600">Admin</p>
                                         :
                                         <button onClick={() => handleAdmin(user)}
                                             className="btn text-white bg-[#D1A054] btn-square btn-sm btn-outline">
