@@ -1,12 +1,15 @@
 import { NavLink, Outlet } from "react-router-dom";
 import { Icon } from '@iconify/react';
 import useCart from "../../hooks/useCart";
-import { useState } from "react";
+
+import useAdmin from "../../hooks/useAdmin";
 
 
 const DashBoard = () => {
     const [cart] = useCart();
-    const [isAdmin] = useState(true);
+    
+
+    const [isAdmin] = useAdmin();
     return (
         <div>
             <div className="drawer lg:drawer-open uppercase font-semibold">
