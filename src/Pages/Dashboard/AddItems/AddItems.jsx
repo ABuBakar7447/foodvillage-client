@@ -1,15 +1,63 @@
 import { Helmet } from "react-helmet-async";
 import Title from "../../../Component/Title/Title";
 import { useForm } from 'react-hook-form';
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
-
+const img_hosting_token = import.meta.env.VITE_Image_Upload_token;
 const AddItems = () => {
+    const [axiosSecure] = useAxiosSecure();
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit } = useForm();
+
+    const img_hosting_url = `https://api.imgbb.com/1/upload?key=${img_hosting_token}`
+
     const onSubmit = data => {
+
         console.log(data)
+
+        const formdata = new FormData ();
+        formdata.append('image', data.image[0])
+
+
+        
+        fetch(img_hosting_url,{
+            method: 'POST',
+            body: formdata
+        })
+
+        .then(res => res.json())
+        .then(imgresponse =>{
+            console.log(data,imgresponse)
+
+            if(imgresponse.success){
+                const imgURL = imgresponse.data.display_url;
+
+                const {name, recipe, price, category} = data;
+
+                const menuItem = {name, recipe, price:parseFloat(price), category, image: imgURL}
+
+                console.log(menuItem)
+
+                axiosSecure.post('/menuItems', menuItem)
+                .then(data =>{
+                    if(data.data.insertedId){
+                        Swal.fire({
+                            position: 'top-end',
+                            icon: 'success',
+                            title: 'Your Item has been added',
+                            showConfirmButton: false,
+                            timer: 1500
+                          })
+                    }
+                })
+
+
+
+            }
+        })
     };
-    console.log(errors);
+    
 
     return (
         <div className="w-full">
@@ -33,18 +81,19 @@ const AddItems = () => {
 
                     <div className="flex mt-2">
                         <div className="form-control w-full">
+                            
                             <label className="label">
                                 <span className="label-text text-black">Category*</span>
                             </label>
 
-                            <select  {...register("category", { required: true })} className="select select-bordered">
+                            <select defaultValue='Pick One'  {...register("category", { required: true })} className="select select-bordered">
 
-                                <option disabled selected>Pick one</option>
-                                <option className="font-semibold">Salad</option>
-                                <option className="font-semibold">Pizza</option>
-                                <option className="font-semibold">Soup</option>
-                                <option className="font-semibold">Dessert</option>
-                                <option className="font-semibold">Drinks</option>
+                                <option disabled>Pick One</option>
+                                <option className="font-semibold">salad</option>
+                                <option className="font-semibold">pizza</option>
+                                <option className="font-semibold">soup</option>
+                                <option className="font-semibold">dessert</option>
+                                <option className="font-semibold">drinks</option>
 
                             </select>
 

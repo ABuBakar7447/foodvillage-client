@@ -44,7 +44,7 @@ const OurShop = () => {
 
 
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
                             {
                                 salad.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
                             }
@@ -53,7 +53,7 @@ const OurShop = () => {
 
 
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
                             {
                                 pizza.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
                             }
@@ -62,7 +62,7 @@ const OurShop = () => {
 
 
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
                             {
                                 soup.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
                             }
@@ -71,7 +71,7 @@ const OurShop = () => {
 
 
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
                             {
                                 dessert.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
                             }
@@ -80,7 +80,7 @@ const OurShop = () => {
                     
 
                     <TabPanel>
-                        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 place-items-center">
                             {
                                 drinks.map(item=><MenuCard key={item._id} item={item}></MenuCard>)
                             }

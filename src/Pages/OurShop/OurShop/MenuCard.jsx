@@ -58,7 +58,7 @@ const MenuCard = ({item}) => {
     return (
         <div>
             <div className="card w-96 shadow-xl bg-[#20242c]">
-                <figure><img src={image} alt="Shoes" /></figure>
+                <figure><img className="w-full" src={image} alt="Shoes" /></figure>
                 <p className="bg-black text-white absolute right-0 mt-4 mr-5 px-3 rounded">${price}</p>
                 <div className="card-body h-[228px] flex items-center text-center flex-col">
                     <h2 className="card-title">{name}</h2>
