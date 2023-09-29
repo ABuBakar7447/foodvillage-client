@@ -53,7 +53,7 @@ const Allusers = () => {
 
             <Title heading={'How many'} subheading={'Manage ALL Users'}></Title>
 
-            <div className="overflow-x-auto bg-white lg:px-24 lg:py-10 my-16 rounded text-black w-full">
+            <div className="overflow-x-auto bg-white lg:px-20 lg:py-10 my-16 rounded text-black w-full">
                 <div className="flex justify-center my-5 lg:text-[22px]">
 
                     <p>Total User: {users.length}</p>
