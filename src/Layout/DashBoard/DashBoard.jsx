@@ -59,8 +59,8 @@ const DashBoard = () => {
                                 :
                                 <>
                                     <li><NavLink to='/dashboard/userhome'><Icon icon="ion:home" /> User Home</NavLink></li>
-                                    <li><NavLink to='/dashboard/reservation'><Icon icon="simple-line-icons:calender" /> Reservation</NavLink></li>
-                                    <li><NavLink to='/dashboard/payment'><Icon icon="zondicons:wallet" /> Payment History</NavLink></li>
+                                    <li><NavLink to='/dashboard/payment'><Icon icon="simple-line-icons:calender" /> Reservation</NavLink></li>
+                                    <li><NavLink to='/dashboard/paymenthistory'><Icon icon="zondicons:wallet" /> Payment History</NavLink></li>
 
 
                                     <li><NavLink to='/dashboard/mycart' className="content">

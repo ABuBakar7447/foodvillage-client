@@ -3,11 +3,12 @@ import useCart from "../../../hooks/useCart";
 import Title from "../../../Component/Title/Title";
 import { Icon } from "@iconify/react";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 
 const MyCart = () => {
-    const [cart,refetch] = useCart();
-    const total = (cart.reduce((sum, item) => item.price + sum, 0)).toFixed(2) ;
+    const [cart, refetch] = useCart();
+    const total = (cart.reduce((sum, item) => item.price + sum, 0)).toFixed(2);
 
     const handleDelete = product => {
         Swal.fire({
@@ -25,7 +26,7 @@ const MyCart = () => {
                 })
                     .then(res => res.json())
                     .then(data => {
-                        
+
                         if (data.deletedCount > 0) {
                             refetch()
                             Swal.fire(
@@ -50,7 +51,9 @@ const MyCart = () => {
 
                     <p>Total Item: {cart.length}</p>
                     <p>Total Cost: {total}</p>
-                    <button className="btn border-none text-white bg-[#D1A054] btn-sm">Pay</button>
+                    <Link to='/dashboard/payment'>
+                        <button className="btn border-none text-white bg-[#D1A054] btn-sm">Pay</button>
+                    </Link>
                 </div>
 
                 <div>
@@ -69,7 +72,7 @@ const MyCart = () => {
                                 </tr>
                             </thead>
 
-                            
+
                             <tbody className="text-center">
                                 {
                                     cart.map((product, index) => <tr key={product._id}>

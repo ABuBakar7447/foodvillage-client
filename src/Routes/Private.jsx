@@ -1,15 +1,15 @@
-import { useContext } from "react";
-import { AuthContext } from "../Provider/AuthProvider";
+
 import { Navigate, useLocation } from "react-router-dom";
+import useAuth from "../hooks/useAuth";
 
 const Private = ({children}) => {
     const location = useLocation();
 
 
-    const {user, loading} = useContext(AuthContext)
+    const {user, loading} = useAuth()
     if(loading){
         return(
-            <div className="w-1/2 mx-auto h-56">
+            <div className="w-1/2 mx-auto h-56 flex justify-center items-center">
                 <progress className="progress w-56"></progress>
             </div>
         )
