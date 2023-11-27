@@ -3,12 +3,14 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStat
 import { app } from "../firebase/firebase.config";
 import axios from "axios";
 
-export const AuthContext = createContext(null)
+
+//createContext should be empty inside first bracket
+export const AuthContext = createContext()
 const auth = getAuth(app);
 const AuthProvider = ({children}) => {
 
     const [user, setUser] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loading, setLoading] = useState(true); //loading state should be true
 
     const googleProvider = new GoogleAuthProvider();
 
@@ -31,7 +33,7 @@ const AuthProvider = ({children}) => {
     }
 
     const logout = () =>{
-        setLoading(true);
+        // setLoading(true); //logout donot need to setloading state
         return signOut(auth);
     }
 
@@ -45,7 +47,7 @@ const AuthProvider = ({children}) => {
     useEffect (()=>{
         const unsubscribe = onAuthStateChanged(auth, currentUser =>{
             setUser(currentUser);
-
+            // setLoading(false)
             if(currentUser){
                 axios.post('http://localhost:5000/jwt',{email:currentUser.email})
                 .then(data =>{
@@ -54,13 +56,14 @@ const AuthProvider = ({children}) => {
                 })
             }
             else{
-                localStorage.removeItem('access-token')
+                localStorage.removeItem('access-token');
+                setLoading(false);
             }
             
 
         });
         return()=>{
-            return unsubscribe;
+            return unsubscribe();
         }
     },[])
 

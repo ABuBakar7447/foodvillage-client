@@ -10,7 +10,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 const Payment = () => {
 
     
-    const [cart] = useCart();
+    const [cart, refetch] = useCart();
     const total = cart.reduce((sum, item)=> sum + item.price, 0);
     const price = parseFloat(total.toFixed(2))
     
@@ -22,7 +22,7 @@ const Payment = () => {
 
             <div>
                 <Elements stripe={stripePromise}>
-                    <CheckoutForm cart={cart} price={price}></CheckoutForm>
+                    <CheckoutForm cart={cart} price={price} refetch={refetch}></CheckoutForm>
                 </Elements>
             </div>
         </div>

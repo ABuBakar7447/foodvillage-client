@@ -4,11 +4,11 @@ import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
-import './CheckoutForm.css'
 
 
 
-const CheckoutForm = ({ cart, price }) => {
+
+const CheckoutForm = ({ cart, price ,refetch }) => {
     const stripe = useStripe();
     const elements = useElements();
     const [errormessage, setErrorMessage] = useState('')
@@ -81,6 +81,7 @@ const CheckoutForm = ({ cart, price }) => {
             settransectionId(paymentIntent.id);
 
             const payment = {
+                date: new Date(),
                 email: user?.email,
                 name: user?.displayName,
                 price,
@@ -96,7 +97,7 @@ const CheckoutForm = ({ cart, price }) => {
             .then( res =>{
                 console.log(res.data)
                 if(res.data.insertResult.insertedId) {
-
+                    refetch()
                     Swal.fire({
                         position: 'top-end',
                         icon: 'success',
@@ -111,7 +112,7 @@ const CheckoutForm = ({ cart, price }) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="p-10">
+            <form onSubmit={handleSubmit} className="p-10 flex flex-col">
                 <CardElement className="p-5 w-1/2 mx-auto bg-white"
 
                     options={{
@@ -131,11 +132,11 @@ const CheckoutForm = ({ cart, price }) => {
                         },
                     }}
                 />
-                <button className="btn btn-primary" type="submit" disabled={!stripe || !clientSecret || !processing}>
+                <button className="btn btn-primary mx-auto m-5" type="submit" disabled={!stripe || !clientSecret || !processing}>
                     Pay
                 </button>
             </form>
-            {transectionId && <p className="font-bold text-green-500">Your Transection ID:{transectionId}</p>}
+            {transectionId && <p className="font-bold text-green-500 text-center">Your Transection ID:{transectionId}</p>}
             {errormessage && <p>{errormessage}</p>}
         </div>
     );

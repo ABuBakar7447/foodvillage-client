@@ -1,14 +1,17 @@
-import { useContext } from "react";
+
 import { Link } from "react-router-dom";
-import { AuthContext } from "../../Provider/AuthProvider";
+
 import { Icon } from '@iconify/react';
 import useCart from "../../hooks/useCart";
+import useAdmin from "../../hooks/useAdmin";
+import useAuth from "../../hooks/useAuth";
 
 
 const Navbar = () => {
 
-    const { user, logout } = useContext(AuthContext);
+    const { user, logout } = useAuth()
     const [cart] = useCart();
+    const [isAdmin] = useAdmin();
     const handleLogout = () => {
         logout()
             .then = (() => { })
@@ -55,13 +58,29 @@ const Navbar = () => {
             </li>
 
             <li>
-                <Link to='/dashboard/mycart' className="flex mt-2">
-                    
-                        <Icon className="w-5 h-5" icon="mdi:cart" />
-                        <div className=" badge badge-secondary">+{cart?.length || 0}</div>
-                    
-                </Link>
+                {
+                    isAdmin ?
+                        <>
+                            <Link to='/dashboard/adminhome' className="flex mt-2">
+                                Dashboard
+                            </Link>
+                        </>
+                        :
+                        <>
+                            <Link to='/dashboard/userhome' className="flex mt-2">
+
+                                <Icon className="w-5 h-5" icon="mdi:cart" />
+                                <div className=" badge badge-secondary">+{cart?.length || 0}</div>
+
+                            </Link>
+                        </>
+                }
+
+                
+
             </li>
+
+            
 
 
         </>
