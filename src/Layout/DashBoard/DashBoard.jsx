@@ -39,14 +39,7 @@ const DashBoard = () => {
                                     </li>
 
 
-                                    <li>
-                                        <NavLink to='/dashboard/managebookings' className="content">
-                                            <Icon icon="gg:notes" />
-                                            Manage Bookings
-                                            {/* <span className=" badge badge-secondary">+{cart?.length || 0}</span> */}
-
-                                        </NavLink>
-                                    </li>
+                                    
 
 
                                     <li>
@@ -71,7 +64,7 @@ const DashBoard = () => {
 
 
                                     <li><NavLink to='/dashboard/review'><Icon icon="material-symbols:rate-review-rounded" /> Add Review</NavLink></li>
-                                    <li><NavLink to='/dashboard/booking'><Icon icon="uim:calender" /> My Booking</NavLink></li>
+                                    
                                 </>
                         }
 
@@ -79,8 +72,8 @@ const DashBoard = () => {
 
                         <li><NavLink to='/'><Icon icon="ion:home" /> Home</NavLink></li>
                         <li><NavLink to='/menu'><Icon icon="ion:menu" /> Menu</NavLink></li>
-                        <li><NavLink to='/'><Icon icon="solar:cart-bold" /> Shop</NavLink></li>
-                        <li><NavLink to='/'><Icon icon="ep:message" /> Contact</NavLink></li>
+                        <li><NavLink to='/shop/salad'><Icon icon="solar:cart-bold" /> Shop</NavLink></li>
+                        <li><NavLink to='/contactus'><Icon icon="ep:message" /> Contact</NavLink></li>
                     </ul>
 
                 </div>

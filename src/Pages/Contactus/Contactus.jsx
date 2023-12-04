@@ -4,7 +4,7 @@ import img from '../../assets/contact/banner.jpg'
 import Title from "../../Component/Title/Title";
 import { Icon } from "@iconify/react";
 
-const Secret = () => {
+const Contactus = () => {
 
 
     const { register, handleSubmit } = useForm();
@@ -104,4 +104,4 @@ const Secret = () => {
     );
 };
 
-export default Secret;
+export default Contactus;

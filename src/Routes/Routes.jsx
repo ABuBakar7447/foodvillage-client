@@ -8,7 +8,6 @@ import OurMenu from "../Pages/OurMenu/OurMenu/OurMenu";
 import OurShop from "../Pages/OurShop/OurShop/OurShop";
 import LogIn from "../Pages/LogIn/LogIn";
 import SignUp from "../Pages/SignUp/SignUp";
-import Secret from "../Pages/Secret/Secret";
 import Private from "./Private";
 import DashBoard from "../Layout/DashBoard/DashBoard";
 import MyCart from "../Pages/Dashboard/MyCart/MyCart";
@@ -21,6 +20,7 @@ import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 import AddReview from "../Pages/Dashboard/AddReview/AddReview";
+import Contactus from "../Pages/Contactus/Contactus";
 
 
 export const router = createBrowserRouter([
@@ -49,8 +49,8 @@ export const router = createBrowserRouter([
         element: <SignUp></SignUp>
       },
       {
-        path: 'secret',
-        element: <Private><Secret></Secret></Private>
+        path: 'contactus',
+        element: <Contactus></Contactus>
       },
     ]
   },
