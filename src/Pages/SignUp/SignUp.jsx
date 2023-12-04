@@ -21,7 +21,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photourl)
                     .then(() => {
                         const userdata = { name: data.name, email: data.email }
-                        fetch('http://localhost:5000/user', {
+                        fetch('https://tame-puce-seagull-toga.cyclic.app/user', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

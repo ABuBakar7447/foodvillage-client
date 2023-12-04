@@ -38,7 +38,7 @@ const UserHome = () => {
             <div>
                 <div className="flex items-center justify-center my-16">
 
-                    <div className="w-1/4 w- h-24 bg-[#BB34F5] ml-2 rounded">
+                    <div className="w-1/4 h-24 bg-[#BB34F5] ml-2 rounded">
 
                         <div className="flex justify-evenly items-center">
                             <Icon className="w-10 h-10 text-white" icon="ion:wallet" />

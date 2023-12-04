@@ -22,7 +22,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/carts/${product._id}`, {
+                fetch(`https://tame-puce-seagull-toga.cyclic.app/carts/${product._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

@@ -19,7 +19,7 @@ const SocialSignup = () => {
                 const loggedInUser = result.user;
                 console.log(loggedInUser);
                 const userdata = { name: loggedInUser.displayName, email: loggedInUser.email }
-                        fetch('http://localhost:5000/user', {
+                        fetch('https://tame-puce-seagull-toga.cyclic.app/user', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

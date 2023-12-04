@@ -4,12 +4,14 @@ import { useForm } from "react-hook-form";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
 import useAuth from "../../../hooks/useAuth";
+import { Helmet } from "react-helmet-async";
+import Title from "../../../Component/Title/Title";
 
 
 const AddReview = () => {
     const [axiosSecure] = useAxiosSecure();
     const [rating, setRating] = useState(3);
-    const {user} = useAuth();
+    const { user } = useAuth();
 
     const { register, handleSubmit } = useForm();
 
@@ -41,44 +43,54 @@ const AddReview = () => {
     }
 
     return (
-        <div className="w-full p-12">
-            <div className="flex justify-center items-center">
-                <Rating
-                    className=""
-                    style={{ maxWidth: 180 }}
-                    value={rating}
-                    onChange={setRating}
-                    isRequired
-                />
-            </div>
+        <div className="w-full p-12 m-8">
 
-            <div className="p-16">
-                <form onSubmit={handleSubmit(onsubmit)}>
-                    <label className="form-control m-5 w-full ">
-                        <div className="label">
-                            <span className="label-text">Which recipe you liked most?</span>
-                        </div>
-                        <input type="text" {...register("likedmost")} placeholder="Type here" className="input input-bordered w-full" />
-                    </label>
+            <Helmet>
+                <title>Add Review</title>
+            </Helmet>
 
-                    <label className="form-control m-5 w-full">
-                        <div className="label">
-                            <span className="label-text">Do you have any suggestion for us?</span>
-                        </div>
-                        <input type="text" {...register("suggestion")} placeholder="Type here" className="input input-bordered w-full" />
-                    </label>
+            <Title heading={'Sharing is Caring'} subheading={'Add Review'}></Title>
+            <div className=" p-12 m-8 bg-gray-200 font-semibold">
+                <div className="flex flex-col justify-center items-center">
+
+                    <p className="text-black font-serif text-3xl">Rate Our Service</p>
+                    <Rating
+                        className=""
+                        style={{ maxWidth: 180 }}
+                        value={rating}
+                        onChange={setRating}
+                        isRequired
+                    />
+                </div>
+
+                <div className="">
+                    <form onSubmit={handleSubmit(onsubmit)}>
+                        <label className="form-control mt-5 w-full ">
+                            <div className="label">
+                                <span className="label-text text-black">Which recipe you liked most?</span>
+                            </div>
+                            <input type="text" {...register("likedmost")} placeholder="Type here" className="bg-white text-black input input-bordered w-full" />
+                        </label>
+
+                        <label className="form-control mt-5 w-full">
+                            <div className="label">
+                                <span className="label-text text-black">Do you have any suggestion for us?</span>
+                            </div>
+                            <input type="text" {...register("suggestion")} placeholder="Type here" className="bg-white text-black input input-bordered w-full" />
+                        </label>
 
 
-                    <label className="form-control m-5">
-                        <div className="label">
-                            <span className="label-text">Kindly express your thoughts in a short way.</span>
-                        </div>
-                        <textarea {...register("thoughts")} className="textarea textarea-bordered h-24" placeholder="Bio"></textarea>
+                        <label className="form-control mt-5">
+                            <div className="label">
+                                <span className="label-text text-black">Kindly express your thoughts in a short way.</span>
+                            </div>
+                            <textarea {...register("thoughts")} className="bg-white text-black textarea textarea-bordered h-24" placeholder="Bio"></textarea>
 
-                    </label>
+                        </label>
 
-                    <input className="btn w-36" type="submit" />
-                </form>
+                        <input className="mt-5 w-36 hover:bg-slate-700 hover:text-white btn btn-outline bg-slate-300 text-black border-[#BB8506] border-0 border-b-4" type="submit" />
+                    </form>
+                </div>
             </div>
         </div>
     );

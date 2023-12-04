@@ -21,7 +21,7 @@ const Allusers = () => {
 
     const handleAdmin = user => {
 
-        fetch(`http://localhost:5000/user/admin/${user._id}`, {
+        fetch(`https://tame-puce-seagull-toga.cyclic.app/user/admin/${user._id}`, {
             method: 'PATCH'
         })
             .then(res => res.json())

@@ -17,7 +17,7 @@ const MenuCard = ({item}) => {
         console.log(item)
         if(user && user.email){
             const orderItem = {foodId:_id, name, image, recipe, price, email:user.email}
-            fetch('http://localhost:5000/carts',{
+            fetch('https://tame-puce-seagull-toga.cyclic.app/carts',{
                 method:'POST',
                 headers:{
                     'content-type': 'application/json'
