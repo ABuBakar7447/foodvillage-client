@@ -9,7 +9,7 @@ const Private = ({children}) => {
 
 
     const {user, loading} = useContext(AuthContext)
-    console.log(user, "loading:",loading)
+    // console.log(user, "loading:",loading)
     
     if(loading){
         return(

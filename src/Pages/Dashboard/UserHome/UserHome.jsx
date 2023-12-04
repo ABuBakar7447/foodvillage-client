@@ -1,41 +1,101 @@
+import { Icon } from "@iconify/react";
+import { Helmet } from "react-helmet-async";
+import Title from "../../../Component/Title/Title";
+import useAuth from "../../../hooks/useAuth";
+import useMenu from "../../../hooks/useMenu";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const UserHome = () => {
+    const { user, loading } = useAuth();
+    const [menu] = useMenu();
+    const [axiosSecure] = useAxiosSecure()
+    
+    const {data:stats=[]} = useQuery({
+        queryKey:['user-dashboard-stats',user?.email],
+        enabled: !loading && !!user?.email,
+        queryFn: async()=>{
+            const res = await axiosSecure.get(`/user-dashboard-stats?email=${user?.email}`)
+            return res.data;
+        }
+    })
+
+    
+
+    
+    
+    const totalquntity = stats[1]?((stats[1].reduce((sum, item) => item.quantity + sum, 0))):0;
+
+    
+    
     return (
         <div className="w-full p-10 m-0">
+            <Helmet>
+                <title>User Dashboard</title>
+            </Helmet>
+
+            <Title heading={`Hi ${user.displayName}`} subheading={'Welcome Back'}></Title>
             <div>
-                <div className="stats shadow mx-auto">
+                <div className="flex items-center justify-center my-16">
 
-                    <div className="stat">
-                        <div className="stat-figure text-primary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-                        </div>
-                        <div className="stat-title">Total Likes</div>
-                        <div className="stat-value text-primary">25.6K</div>
-                        <div className="stat-desc">21% more than last month</div>
-                    </div>
+                    <div className="w-1/4 w- h-24 bg-[#BB34F5] ml-2 rounded">
 
-                    <div className="stat">
-                        <div className="stat-figure text-secondary">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <div className="stat-title">Page Views</div>
-                        <div className="stat-value text-secondary">2.6M</div>
-                        <div className="stat-desc">21% more than last month</div>
-                    </div>
-
-                    <div className="stat">
-                        <div className="stat-figure text-secondary">
-                            <div className="avatar online">
-                                <div className="w-16 rounded-full">
-                                    <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
-                                </div>
+                        <div className="flex justify-evenly items-center">
+                            <Icon className="w-10 h-10 text-white" icon="ion:wallet" />
+                            <div className="text-white m-2 text-xl text-center">
+                                <p>{menu.length}</p>
+                                <p>Menu</p>
                             </div>
                         </div>
-                        <div className="stat-value">86%</div>
-                        <div className="stat-title">Tasks done</div>
-                        <div className="stat-desc text-secondary">31 tasks remaining</div>
                     </div>
 
+                    <div className="w-1/4 h-24 bg-[#D3A256] ml-2 rounded">
+                        <div className="flex justify-evenly items-center">
+                            <Icon className="w-10 h-10 text-white" icon="icon-park-twotone:shop" />
+                            <div className="text-white m-2 text-xl text-center">
+                                <p>{totalquntity}</p>
+                                <p>Shop</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-1/4 h-24 bg-[#FE4880] ml-2 rounded ">
+                        <div className="flex justify-evenly items-center">
+                            <Icon className="w-10 h-10 text-white" icon="gg:phone" />
+                            <div className="text-white m-2 text-xl text-center">
+                                <p>3</p>
+                                <p>Contact</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+
+
+                </div>
+            </div>
+
+
+            <div className="flex">
+                <div className="avatar w-1/2 h-96 bg-[#FFEDD5] flex flex-col justify-center items-center rounded-sm">
+                    <div className="w-32 rounded-full border-2 border-yellow-600">
+                        <img src={user.photoURL} />
+                        
+                    </div>
+                    <p className="mt-5 text-black">{user.displayName}</p>
+                </div>
+
+                
+
+                <div className="w-1/2 ">
+                    <div className="bg-[#FEF9C3] h-96 flex flex-col justify-center items-center text-black">
+                        <div>
+                        <p className="text-2xl font-serif my-2">Your Activites</p>
+                        <p className="">Booking: {stats[0]?.length}</p>
+                        <p className="">Reviews:</p>
+                        <p className="">Order: {totalquntity}</p>
+                        
+                        <p className="">Payment: {stats[1]?.length}</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

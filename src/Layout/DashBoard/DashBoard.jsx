@@ -12,7 +12,7 @@ const DashBoard = () => {
     const [isAdmin] = useAdmin();
     return (
         <div>
-            <div className="drawer lg:drawer-open uppercase font-semibold">
+            <div className="drawer lg:drawer-open font-semibold">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content flex flex-col items-center justify-center">
                     <Outlet></Outlet>
@@ -21,7 +21,7 @@ const DashBoard = () => {
                 </div>
                 <div className="drawer-side bg-[#D1A054]">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 min-h-full">
+                    <ul className="menu uppercase p-4 w-80 min-h-full">
                         {/* Sidebar content here */}
                         {
                             isAdmin ?
