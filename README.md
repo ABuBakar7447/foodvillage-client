@@ -1,7 +1,7 @@
 # React + Vite
 * Website technologies:
 
-For Fronted or Ui: Vite, React, Tailwind css(daisy ui library), React hook form, firbase
+For Fronted or Ui: Vite, React, Tailwind css(daisy ui library), React hook form, Firebase
 
  For Backend : Node express js, MongoDB, JWT, CORS
 
