@@ -21,7 +21,7 @@ const Reviews = () => {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
-        fetch('https://tame-puce-seagull-toga.cyclic.app/reviews')
+        fetch('https://foodvillage-server.vercel.app/reviews')
             .then(res => res.json())
             .then(data => setReviews(data))
     }, []);

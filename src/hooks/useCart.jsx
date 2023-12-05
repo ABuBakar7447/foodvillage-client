@@ -13,7 +13,7 @@ const useCart = () => {
     //     enabled: !loading,
     //     queryFn: async () =>{
 
-    //         const res = await fetch(`https://tame-puce-seagull-toga.cyclic.app/carts?email=${user?.email}`, { headers: {
+    //         const res = await fetch(`https://foodvillage-server.vercel.app/carts?email=${user?.email}`, { headers: {
     //             authorization: `bearer ${token}`
     //         }})
     //         return res.json();

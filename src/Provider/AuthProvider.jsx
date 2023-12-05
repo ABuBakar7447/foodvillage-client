@@ -49,7 +49,7 @@ const AuthProvider = ({children}) => {
             setUser(currentUser);
             // setLoading(false)
             if(currentUser){
-                axios.post('https://tame-puce-seagull-toga.cyclic.app/jwt',{email:currentUser.email})
+                axios.post('https://foodvillage-server.vercel.app/jwt',{email:currentUser.email})
                 .then(data =>{
                     localStorage.setItem('access-token', data.data.token)
                     setLoading(false);

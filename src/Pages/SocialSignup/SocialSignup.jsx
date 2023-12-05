@@ -17,9 +17,9 @@ const SocialSignup = () => {
         googleSignIn()
             .then(result => {
                 const loggedInUser = result.user;
-                console.log(loggedInUser);
+                // console.log(loggedInUser);
                 const userdata = { name: loggedInUser.displayName, email: loggedInUser.email }
-                        fetch('https://tame-puce-seagull-toga.cyclic.app/user', {
+                        fetch('https://foodvillage-server.vercel.app/user', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

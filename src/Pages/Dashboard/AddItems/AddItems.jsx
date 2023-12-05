@@ -14,7 +14,7 @@ const AddItems = () => {
 
     const onSubmit = data => {
 
-        console.log(data)
+        // console.log(data)
 
         const formdata = new FormData ();
         formdata.append('image', data.image[0])
@@ -28,7 +28,7 @@ const AddItems = () => {
 
         .then(res => res.json())
         .then(imgresponse =>{
-            console.log(data,imgresponse)
+         
 
             if(imgresponse.success){
                 const imgURL = imgresponse.data.display_url;
@@ -37,7 +37,7 @@ const AddItems = () => {
 
                 const menuItem = {name, recipe, price:parseFloat(price), category, image: imgURL}
 
-                console.log(menuItem)
+                
 
                 axiosSecure.post('/menuItems', menuItem)
                 .then(data =>{

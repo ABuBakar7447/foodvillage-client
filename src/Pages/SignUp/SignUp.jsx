@@ -13,7 +13,7 @@ const SignUp = () => {
     const navigate = useNavigate()
 
     const handleSignIN = data => {
-        console.log(data)
+        // console.log(data)
         createuser(data.email, data.password)
             .then(result => {
                 const user = result.user;
@@ -21,7 +21,7 @@ const SignUp = () => {
                 updateUserProfile(data.name, data.photourl)
                     .then(() => {
                         const userdata = { name: data.name, email: data.email }
-                        fetch('https://tame-puce-seagull-toga.cyclic.app/user', {
+                        fetch('https://foodvillage-server.vercel.app/user', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json'

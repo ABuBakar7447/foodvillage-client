@@ -22,7 +22,7 @@ const CheckoutForm = ({ cart, price ,refetch }) => {
         if (price > 0) {
             axiosSecure.post('/create-payment-intent', { price })
                 .then(res => {
-                    console.log(res.data.clientSecret)
+                    // console.log(res.data.clientSecret)
                     setClientSecret(res.data.clientSecret)
                 })
         }
@@ -41,18 +41,18 @@ const CheckoutForm = ({ cart, price ,refetch }) => {
             return;
         }
 
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
         if (error) {
-            console.log('error', error);
+            // console.log('error', error);
             setErrorMessage(error.message)
         }
 
         else {
             setErrorMessage('');
-            console.log('PaymentMethod', paymentMethod)
+            // console.log('PaymentMethod', paymentMethod)
         }
         setProcessing(true);
 
@@ -70,11 +70,11 @@ const CheckoutForm = ({ cart, price ,refetch }) => {
         );
 
         if (confirmError) {
-            console.log(confirmError);
+            // console.log(confirmError);
             setErrorMessage(confirmError);
         }
 
-        console.log(paymentIntent)
+        // console.log(paymentIntent)
         setProcessing(false);
 
         if (paymentIntent.status === 'succeeded') {
@@ -95,7 +95,7 @@ const CheckoutForm = ({ cart, price ,refetch }) => {
 
             axiosSecure.post('/payment', payment)
             .then( res =>{
-                console.log(res.data)
+                // console.log(res.data)
                 if(res.data.insertResult.insertedId) {
                     refetch()
                     Swal.fire({

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const MyCart = () => {
     const [cart, refetch] = useCart();
-    console.log(cart);
+    // console.log(cart);
     const total = (cart.reduce((sum, item) => item.price + sum, 0)).toFixed(2);
 
     const handleDelete = product => {
@@ -22,7 +22,7 @@ const MyCart = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://tame-puce-seagull-toga.cyclic.app/carts/${product._id}`, {
+                fetch(`https://foodvillage-server.vercel.app/carts/${product._id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

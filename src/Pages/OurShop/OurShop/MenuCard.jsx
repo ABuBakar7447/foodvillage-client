@@ -17,7 +17,7 @@ const MenuCard = ({item}) => {
         console.log(item)
         if(user && user.email){
             const orderItem = {foodId:_id, name, image, recipe, price, email:user.email}
-            fetch('https://tame-puce-seagull-toga.cyclic.app/carts',{
+            fetch('https://foodvillage-server.vercel.app/carts',{
                 method:'POST',
                 headers:{
                     'content-type': 'application/json'

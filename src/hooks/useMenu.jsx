@@ -5,7 +5,7 @@ const useMenu = () => {
     // const [loading, setLoading]=useState(true);
     // const [menu, setMenu]=useState([]);
     //  useEffect(()=>{
-    //     fetch('https://tame-puce-seagull-toga.cyclic.app/menuitems')
+    //     fetch('https://foodvillage-server.vercel.app/menuitems')
     //     .then(res=>res.json())
     //     .then(data => {
     //         setMenu(data);
@@ -16,7 +16,7 @@ const useMenu = () => {
     const { data: menu = [], isLoading, refetch } = useQuery({
         queryKey: ['menuitems'],
         queryFn: async () => {
-            const res = await fetch('https://tame-puce-seagull-toga.cyclic.app/menuitems')
+            const res = await fetch('https://foodvillage-server.vercel.app/menuitems')
             return res.json()
 
         }

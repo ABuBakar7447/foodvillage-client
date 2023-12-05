@@ -16,7 +16,7 @@ const AddReview = () => {
     const { register, handleSubmit } = useForm();
 
     const onsubmit = data => {
-        console.log(data);
+        
 
         const review = {
             name: user.displayName,
@@ -26,7 +26,7 @@ const AddReview = () => {
             rating: rating
         }
 
-        console.log(review)
+        
 
         axiosSecure.post('/reviews', review)
             .then(data => {

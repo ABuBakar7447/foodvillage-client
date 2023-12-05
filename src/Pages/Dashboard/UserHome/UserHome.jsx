@@ -89,7 +89,7 @@ const UserHome = () => {
                     <div className="bg-[#FEF9C3] h-96 flex flex-col justify-center items-center text-black">
                         <div>
                         <p className="text-2xl font-serif my-2">Your Activites</p>
-                        <p className="">Booking: {stats[0]?.length}</p><p className="">Reviews:</p>
+                        <p className="">Booking: {stats[0]?.length}</p>
                         <p className="">Order: {totalquntity}</p>
                         
                         <p className="">Payment: {stats[1]?.length}</p>
