@@ -25,3 +25,7 @@ The website's name is Foodvillage. Basically, this website is a food ordering we
 * As an admin, you can manage food items.
 * As an admin, you can also manage all users. You can make a user an admin or delete a user.
 
+
+## admin email: topu$$@dil.com
+## admin password: 123456A@a
+
